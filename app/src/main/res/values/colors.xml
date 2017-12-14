@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main Style -->
     <color name="colorPrimary">#009688  </color>
     <color name="colorPrimaryDark">#00675b</color>
     <color name="primaryLightColor">#52c7b8</color>
-
     <color name="colorAccent">#004d40</color>
-
     <color name="appBackground">#EEEEEE</color>
+
+    <!-- Edit task Style -->
+    <color name="editColorPrimary">#3F51B5</color>
+    <color name="editColorPrimaryDark">#303F9F</color>
+    <color name="editColorPrimaryLight">#7986CB</color>
+    <color name="editColorAccent">#1A237E</color>
+
+    <!-- Add Task Style -->
+    <color name="addColorPrimary">#4CAF50</color>
+    <color name="addColorPrimaryDark">#388E3C</color>
+    <color name="addColorPrimaryLight">#81C784</color>
+    <color name="addColorAccent">#1B5E20</color>
 
 </resources>

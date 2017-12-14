@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="editTaskTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimary">@color/editColorPrimary</item>
+        <item name="colorPrimaryDark">@color/editColorPrimaryDark</item>
+        <item name="colorAccent">@color/editColorAccent</item>
+    </style>
+
+    <style name="addTaskTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/addColorPrimary</item>
+        <item name="colorPrimaryDark">@color/addColorPrimaryDark</item>
+        <item name="colorAccent">@color/addColorAccent</item>
+
+    </style>
+
 </resources>

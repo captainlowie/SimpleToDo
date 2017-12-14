@@ -15,15 +15,14 @@
         android:layout_marginTop="24dp">
 
         <EditText
-            android:id="@+id/taskNameEditText"
+            android:id="@+id/taskEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:fontFamily="sans-serif-condensed"
             android:hint="Add your task here"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:textStyle="bold" />
+            />
 
     </LinearLayout>
 
@@ -39,7 +38,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:background="@color/addColorPrimaryLight"
+            android:background="@color/editColorPrimaryLight"
             android:onClick="openTimePicker"
             android:orientation="horizontal">
 
@@ -73,7 +72,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:background="@color/addColorPrimaryLight"
+            android:background="@color/editColorPrimaryLight"
             android:onClick="openDatePicker"
             android:orientation="horizontal">
 
@@ -117,7 +116,6 @@
             android:hint="Some space for notes..."
             android:textColorHint="@color/colorAccent"
             android:textColor="@color/colorAccent"
-            android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:inputType="textCapSentences|textMultiLine"
             android:scrollHorizontally="false"

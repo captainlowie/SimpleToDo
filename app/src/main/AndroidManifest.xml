@@ -19,10 +19,16 @@
         </activity>
         <activity
             android:name=".AddTask_Activity"
-            android:parentActivityName=".MainActivity"
             android:label="Add a Task"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/addTaskTheme"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Edit_Task_Activity" />
+        <activity
+            android:name=".EditTask_Activity"
+            android:label="Edit a Task"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/editTaskTheme"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

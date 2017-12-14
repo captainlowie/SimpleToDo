@@ -58,12 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(close == 0) {
+        if (close == 0) {
             Toast exit = Toast.makeText(MainActivity.this, "Click again to close the app", Toast.LENGTH_SHORT);
             exit.show();
             close++;
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -156,47 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 String clickedItem = taskTextView.getText().toString();
                 Log.v("clickedItem", clickedItem);
 
-                final EditText taskEditText = new EditText(MainActivity.this);
-                taskEditText.setText(clickedItem);
-                AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Task editor")
-                        .setMessage("What do you want to edit?")
-                        .setView(taskEditText)
-                        .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                String taskNew = String.valueOf(taskEditText.getText());
-
-
-                                if (taskNew.equals("")) {
-                                    Toast toast = Toast.makeText(MainActivity.this, "You have to enter a task, idiot", Toast.LENGTH_SHORT);
-                                    toast.show();
-                                } else {
-
-                                    TextView taskTextView = view.findViewById(R.id.task_title);
-                                    String task = String.valueOf(taskTextView.getText());
-                                    SQLiteDatabase db = mHelper.getWritableDatabase();
-                                    ContentValues values = new ContentValues();
-                                    db.delete(TaskContract.TaskEntry.TABLE,
-                                            TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
-                                            new String[]{task});
-                                    values.put(TaskContract.TaskEntry.COL_TASK_TITLE, taskNew);
-                                    db.insertWithOnConflict(TaskContract.TaskEntry.TABLE,
-                                            null,
-                                            values,
-                                            SQLiteDatabase.CONFLICT_REPLACE);
-                                    db.close();
-                                    updateList();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Cancel", null)
-                        .create();
-
-                dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-                dialog.show();
+                Intent intent = new Intent(getBaseContext(), EditTask_Activity.class);
+                intent.putExtra("EXTRA_OLD_TEXT", clickedItem);
+                startActivityForResult(intent, IntentConstants.INTENT_REQUEST_EDIT);
+                updateList();
             }
         });
     }
@@ -205,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
     //get Result from Intent and handles it by its request/result code
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        close=0;
+        close = 0;
 
         switch (requestCode) {
             //if intent was to make a new task -> add task to arraylist
@@ -233,6 +195,30 @@ public class MainActivity extends AppCompatActivity {
                     //t.show();
                     break;
                 }
+
+            case IntentConstants.INTENT_REQUEST_EDIT:
+                if (resultCode == Activity.RESULT_FIRST_USER) {
+                    String taskOld = data.getStringExtra(IntentConstants.OLD_TASK_NAME);
+                    String taskNew = data.getStringExtra(IntentConstants.EDIT_TASK_NAME);
+
+                    SQLiteDatabase db = mHelper.getWritableDatabase();
+                    ContentValues values = new ContentValues();
+                    db.delete(TaskContract.TaskEntry.TABLE,
+                            TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
+                            new String[]{taskOld});
+                    values.put(TaskContract.TaskEntry.COL_TASK_TITLE, taskNew);
+                    db.insertWithOnConflict(TaskContract.TaskEntry.TABLE,
+                            null,
+                            values,
+                            SQLiteDatabase.CONFLICT_REPLACE);
+                    db.close();
+                    updateList();
+                    break;
+                } else {
+
+                    break;
+                }
+
         }
     }
 }
