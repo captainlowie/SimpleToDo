@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+        <item
+            android:id="@+id/actionDarkTheme"
+            android:title="Dark Theme"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/actionLightTheme"
+            android:title="Light Theme"
+            app:showAsAction="never" />
+    </group>
+</menu>
