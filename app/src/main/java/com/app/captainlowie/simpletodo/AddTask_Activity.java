@@ -47,7 +47,7 @@ public class AddTask_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task_activity);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setDefaultDateTime();
 
 

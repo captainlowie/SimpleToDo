@@ -37,7 +37,7 @@ public class EditTask_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task_);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setDefaultDateTime();
 
         taskEditText = findViewById(R.id.taskEditText);
