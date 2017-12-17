@@ -22,4 +22,17 @@
 
     </style>
 
+    <style name="editPicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="colorPrimary">@color/editColorPrimary</item>
+        <item name="colorPrimaryDark">@color/editColorPrimaryDark</item>
+        <item name="colorAccent">@color/editColorPrimaryLight</item>
+    </style>
+
+    <style name="addPicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="colorPrimary">@color/addColorPrimary</item>
+        <item name="colorPrimaryDark">@color/addColorPrimaryDark</item>
+        <item name="colorAccent">@color/addColorPrimaryLight</item>
+    </style>
 </resources>

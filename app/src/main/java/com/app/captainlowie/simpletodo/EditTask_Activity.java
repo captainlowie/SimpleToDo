@@ -37,7 +37,7 @@ public class EditTask_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task_);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setDefaultDateTime();
 
         taskEditText = findViewById(R.id.taskEditText);
@@ -99,7 +99,7 @@ public class EditTask_Activity extends AppCompatActivity {
 
         };
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(EditTask_Activity.this, android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar, myTimeListener, hour, minute, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(EditTask_Activity.this, R.style.editPicker, myTimeListener, hour, minute, true);
         timePickerDialog.show();
 
     }
@@ -114,6 +114,7 @@ public class EditTask_Activity extends AppCompatActivity {
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
+        month++;
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         dateTextView = findViewById(R.id.dateTextView);
