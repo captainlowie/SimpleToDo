@@ -2,10 +2,6 @@ package com.app.captainlowie.simpletodo;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by eduard on 24.11.17.
- */
-
 public class TaskContract {
 
     public static final String DB_NAME = "simpletodo.db";
@@ -15,6 +11,9 @@ public class TaskContract {
         public static final String TABLE = "tasks";
 
         public static final String COL_TASK_TITLE = "title";
+        public static final String COL_TASK_TIME = "time";
+        public static final String COL_TASK_DATE = "date";
+        public static final String COL_TASK_DESCRIPTION = "description";
     }
 
 }

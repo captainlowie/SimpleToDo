@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:hint="Add your task here"
+            android:hint="@string/TaskEditor_Hint"
+            android:maxLength="39"
+            android:maxLines="2"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
             />
@@ -59,7 +61,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_toEndOf="@id/clockImage"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Choose a time"
+                android:text="@string/choose_time"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -93,7 +95,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_toEndOf="@id/dateImage"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Choose a date"
+                android:text="@string/choose_date"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -110,10 +112,11 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@id/notesEditText"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:hint="Some space for notes..."
+            android:hint="@string/hint_notes_editText"
             android:textColorHint="@color/colorAccent"
             android:textColor="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"

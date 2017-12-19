@@ -11,5 +11,5 @@ public class IntentConstants {
     public static final String EDIT_TASK_NAME = "edited.task.name";                 //constant for editing task
     public static final int INTENT_REQUEST_EDIT = 2;                                //request code for editing task
     public static final String OLD_TASK_NAME = "old.task.name";                     //constant for old task name
-
+    public static final String NEW_TASK_DESCRIPTION = "new.description";
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple To Do</string>
+    <string name="TaskEditor_Hint">Was willst du machen?</string>
+    <string name="choose_time">Wähl eine Uhrzeit aus</string>
+    <string name="choose_date">Wähl ein Datum aus</string>
+    <string name="hint_notes_editText">Deine Notizen...</string>
+    <string name="night_mode_setting">Nachtmodus an</string>
+    <string name="about_me_setting">Über mich</string>
+    <string name="made_by">Entwickelt von Eduard Lotz</string>
+</resources>

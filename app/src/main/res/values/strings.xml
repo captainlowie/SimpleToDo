@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Simple To Do</string>
+    <string name="TaskEditor_Hint">What do you want to do?</string>
+    <string name="choose_time">Choose a time</string>
+    <string name="choose_date">Choose a date</string>
+    <string name="hint_notes_editText">Some space for notes...</string>
+    <string name="night_mode_setting">Night Mode</string>
+    <string name="about_me_setting">About Me</string>
+    <string name="made_by">Made by Eduard Lotz</string>
 </resources>

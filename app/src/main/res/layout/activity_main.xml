@@ -17,7 +17,9 @@
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="8dp"
-        android:longClickable="true" />
+        android:longClickable="true"
+
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnAdd"
@@ -27,6 +29,8 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
         android:onClick="openAddDialog"
+        android:backgroundTint="@color/colorAccent"
         android:src="@drawable/plus" />
+
 
 </RelativeLayout>

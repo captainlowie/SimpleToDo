@@ -9,11 +9,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,26 +36,68 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    private boolean lightBulbisOn = false;
     private int close;
     private TaskDbHelper mHelper;
     private ListView taskView;
     private FloatingActionButton btnAdd;
     private ArrayAdapter<String> mAdapter;
+    private FloatingActionButton btnNight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         btnAdd = findViewById(R.id.btnAdd);
         mHelper = new TaskDbHelper(this);
         taskView = findViewById(R.id.taskList);
+
         deleteTask();
         updateList();
         editTask();
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        if(item.getItemId()== R.id.nightMode_setting) {
+
+            if(!lightBulbisOn) {
+                item.setIcon(R.drawable.lightbulb);
+                lightBulbisOn = true;
+            }
+            else {
+                item.setIcon(R.drawable.lightbulb_outline);
+                lightBulbisOn = false;
+            }
+        }
+        if(item.getItemId()== R.id.aboutMe_setting) {
+            Toast toastAbout = Toast.makeText(MainActivity.this, R.string.made_by, Toast.LENGTH_SHORT);
+            toastAbout.show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void restartApp() {
+        Intent i =  new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override
@@ -175,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     //get Taskname
                     String taskName = data.getStringExtra(IntentConstants.NEW_TASK_NAME);
-
+                    String notesText = data.getStringExtra(IntentConstants.NEW_TASK_DESCRIPTION);
                     //save taskName to DB
                     SQLiteDatabase db = mHelper.getWritableDatabase();
                     ContentValues values = new ContentValues();

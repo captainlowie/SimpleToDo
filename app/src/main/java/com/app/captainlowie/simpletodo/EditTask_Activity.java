@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class EditTask_Activity extends AppCompatActivity {
     FloatingActionButton addTaskFab;
     TextView clockTextView;
     TextView dateTextView;
+    EditText notesEditText;
 
 
     @Override
@@ -41,6 +43,12 @@ public class EditTask_Activity extends AppCompatActivity {
         setDefaultDateTime();
 
         taskEditText = findViewById(R.id.taskEditText);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Raleway-Black.ttf");
+        taskEditText.setTypeface(tf);
+
+        notesEditText = findViewById(R.id.notesEditText);
+        notesEditText.setTypeface(tf);
+
         String taskOld = getIntent().getStringExtra("EXTRA_OLD_TEXT");
         Log.v("Oldtask", taskOld);
         taskEditText.setText(taskOld);

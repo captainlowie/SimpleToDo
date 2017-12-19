@@ -10,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -40,12 +41,21 @@ public class AddTask_Activity extends AppCompatActivity {
     FloatingActionButton addTaskFab;
     TextView clockTextView;
     TextView dateTextView;
+    EditText notesEditText;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_task_activity);
+
+        taskEditText = findViewById(R.id.taskNameEditText);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Raleway-Black.ttf");
+        taskEditText.setTypeface(tf);
+
+        notesEditText = findViewById(R.id.notesEditText);
+        notesEditText.setTypeface(tf);
+
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setDefaultDateTime();
@@ -62,6 +72,8 @@ public class AddTask_Activity extends AppCompatActivity {
     public void saveButtonClicked(View view) {
         taskEditText = findViewById(R.id.taskNameEditText);
         String taskName = taskEditText.getText().toString();
+        notesEditText = findViewById(R.id.notesEditText);
+        String notesText = notesEditText.getText().toString();
 
         if (taskName.equals("")) {
             Toast noInputToast = Toast.makeText(AddTask_Activity.this,
@@ -70,6 +82,7 @@ public class AddTask_Activity extends AppCompatActivity {
         } else {
             Intent intent = new Intent();
             intent.putExtra(IntentConstants.NEW_TASK_NAME, taskName);
+            intent.putExtra(IntentConstants.NEW_TASK_DESCRIPTION, notesText);
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
