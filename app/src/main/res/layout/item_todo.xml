@@ -13,6 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
+        android:onClick="editTask"
         android:background="@drawable/shadow_drawable"
         android:elevation="4dp"
         >
@@ -27,16 +28,13 @@
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
-        <!--
-        **Not Working**
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="16dp"
             android:id="@+id/taskCheckBox"/>
-
-            -->
 
     </RelativeLayout>
 

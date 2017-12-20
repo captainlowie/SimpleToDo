@@ -2,6 +2,7 @@ package com.app.captainlowie.simpletodo;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         btnAdd = findViewById(R.id.btnAdd);
         mHelper = new TaskDbHelper(this);
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         deleteTask();
         updateList();
-        editTask();
+        //editTask();
 
 
     }
@@ -75,18 +78,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        if(item.getItemId()== R.id.nightMode_setting) {
+        if (item.getItemId() == R.id.nightMode_setting) {
 
-            if(!lightBulbisOn) {
+            if (!lightBulbisOn) {
                 item.setIcon(R.drawable.lightbulb);
                 lightBulbisOn = true;
-            }
-            else {
+            } else {
                 item.setIcon(R.drawable.lightbulb_outline);
                 lightBulbisOn = false;
             }
         }
-        if(item.getItemId()== R.id.aboutMe_setting) {
+        if (item.getItemId() == R.id.aboutMe_setting) {
             Toast toastAbout = Toast.makeText(MainActivity.this, R.string.made_by, Toast.LENGTH_SHORT);
             toastAbout.show();
         }
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void restartApp() {
-        Intent i =  new Intent(getApplicationContext(),MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
     }
@@ -189,22 +191,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void editTask() {
-        taskView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, final View view, int i, long l) {
-                Log.v("Shortclick", "pos " + i);
+    @SuppressLint("RestrictedApi")
+    public void editTask(View view) {
+        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+        animation1.setDuration(1000);
+        view.startAnimation(animation1);
 
-                TextView taskTextView = view.findViewById(R.id.task_title);
-                String clickedItem = taskTextView.getText().toString();
-                Log.v("clickedItem", clickedItem);
+        TextView taskTextView = view.findViewById(R.id.task_title);
+        String clickedItem = taskTextView.getText().toString();
+        Log.v("clickedItem", clickedItem);
 
-                Intent intent = new Intent(getBaseContext(), EditTask_Activity.class);
-                intent.putExtra("EXTRA_OLD_TEXT", clickedItem);
-                startActivityForResult(intent, IntentConstants.INTENT_REQUEST_EDIT);
-                updateList();
-            }
-        });
+        Intent intent = new Intent(getBaseContext(), EditTask_Activity.class);
+        intent.putExtra("EXTRA_OLD_TEXT", clickedItem);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, view, "view");
+        startActivityForResult(intent, IntentConstants.INTENT_REQUEST_EDIT,options.toBundle());
+        updateList();
     }
 
 

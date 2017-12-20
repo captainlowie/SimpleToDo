@@ -1,6 +1,7 @@
 package com.app.captainlowie.simpletodo;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
@@ -13,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -38,7 +41,7 @@ public class EditTask_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task_);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setDefaultDateTime();
 
@@ -80,6 +83,10 @@ public class EditTask_Activity extends AppCompatActivity {
     }
 
     public void openTimePicker(View view) {
+        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+        animation1.setDuration(1000);
+        view.startAnimation(animation1);
+
         clockTextView = findViewById(R.id.clockTextView);
         final Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
@@ -113,6 +120,10 @@ public class EditTask_Activity extends AppCompatActivity {
     }
 
     public void openDatePicker(View view) {
+        Animation animation1 = new AlphaAnimation(0.3f, 1.0f);
+        animation1.setDuration(1000);
+        view.startAnimation(animation1);
+
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(),"Date Picker");
     }

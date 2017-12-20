@@ -18,7 +18,7 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="8dp"
         android:longClickable="true"
-
+        android:hapticFeedbackEnabled="true"
         />
 
     <android.support.design.widget.FloatingActionButton
